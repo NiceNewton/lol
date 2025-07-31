@@ -69,10 +69,10 @@ if uploaded_file is not None:
         else:
             img = Image.open(file)
 
-        st.image(img, caption="📷 Original", use_column_width=True)
+        st.image(img, caption="📷 Original", use_container_width=True)
         with st.spinner("✨ Enhancing..."):
             enhanced_img = enhance_image(model, img, intensity=intensity)
-        st.image(enhanced_img, caption="⚡ Enhanced", use_column_width=True)
+        st.image(enhanced_img, caption="⚡ Enhanced", use_container_width=True)
 
     if uploaded_file.name.endswith(".zip"):
         import shutil
