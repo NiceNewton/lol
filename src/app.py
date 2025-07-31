@@ -83,9 +83,25 @@ if uploaded_file is not None:
         try:
             img = Image.open(file)
             st.image(img, caption="📷 Original", use_container_width=True)
+
             with st.spinner("✨ Enhancing..."):
                 enhanced_img = enhance_image(model, img, intensity=intensity)
+
             st.image(enhanced_img, caption="⚡ Enhanced", use_container_width=True)
+
+            # Convert enhanced image to bytes
+            img_buffer = io.BytesIO()
+            enhanced_img.save(img_buffer, format="PNG")
+            img_bytes = img_buffer.getvalue()
+
+            # Download button
+            st.download_button(
+                label="📥 Download Enhanced Image",
+                data=img_bytes,
+                file_name=f"enhanced_{os.path.basename(file)}.png",
+                mime="image/png"
+            )
+
         except Exception as e:
             st.error(f"Failed to process {file}: {e}")
 
