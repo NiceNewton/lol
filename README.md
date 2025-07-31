@@ -203,8 +203,8 @@ Upload a ZIP file containing multiple images, and the app will process them all 
 <br />
 </td>
 <td align="center">
-<a href="https://github.com/CONTRIBUTOR3">
-<img src="https://via.placeholder.com/100x100/34a853/ffffff?text=?" width="100px;" alt="Contributor"/>
+<a href="https://github.com/SatwickSinha">
+<img src="https://github.com/SatwickSinha.png" width="100px;" alt="Contributor"/>
 <br />
 <sub><b>Your Name</b></sub>
 </a>
