@@ -192,17 +192,15 @@ Upload a ZIP file containing multiple images, and the app will process them all 
 <sub><b>NiceNewton</b></sub>
 </a>
 <br />
-<em>Lead Developer</em>
 </td>
 <!-- Add more contributors here -->
 <td align="center">
-<a href="https://github.com/CONTRIBUTOR2">
+<a href="https://github.com/shoury-dev">
 <img src="https://via.placeholder.com/100x100/4285f4/ffffff?text=?" width="100px;" alt="Contributor"/>
 <br />
 <sub><b>Contributor Name</b></sub>
 </a>
 <br />
-<em>ML Engineer</em>
 </td>
 <td align="center">
 <a href="https://github.com/CONTRIBUTOR3">
@@ -211,7 +209,6 @@ Upload a ZIP file containing multiple images, and the app will process them all 
 <sub><b>Your Name</b></sub>
 </a>
 <br />
-<em>UI/UX Designer</em>
 </td>
 </tr>
 </table>
