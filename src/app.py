@@ -15,14 +15,14 @@ st.markdown("Upload low-light images (individually or as a `.zip`) to enhance th
 
 # Load model
 @st.cache_resource
-def load_model(path="LOW_LIGHT_MODEL.h5"):
+def load_model(path="../models/LOW_LIGHT_MODEL.h5"):
     if not os.path.exists(path):
         return None
     return tf.keras.models.load_model(path, compile=False)
 
 model = load_model()
 if model is None:
-    st.error("Model file 'LOW_LIGHT_MODEL.h5' not found. Please place it in the app folder.")
+    st.error("Model file 'LOW_LIGHT_MODEL.h5' not found. Please place it in the models folder.")
     st.stop()
 
 # Preprocess image
