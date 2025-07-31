@@ -198,7 +198,7 @@ Upload a ZIP file containing multiple images, and the app will process them all 
 <a href="https://github.com/shoury-dev">
 <img src="https://via.placeholder.com/100x100/4285f4/ffffff?text=?" width="100px;" alt="Contributor"/>
 <br />
-<sub><b>Contributor Name</b></sub>
+<sub><b>Shouryjeet Gupta</b></sub>
 </a>
 <br />
 </td>
