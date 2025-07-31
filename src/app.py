@@ -6,6 +6,15 @@ import io
 import zipfile
 import os
 
+# Debug information (only show in development)
+if st.checkbox("🔧 Show Debug Info", value=False):
+    st.write("**Current working directory:**", os.getcwd())
+    st.write("**Files in current directory:**", os.listdir("."))
+    if os.path.exists("models"):
+        st.write("**Files in models directory:**", os.listdir("models"))
+    if os.path.exists("../models"):
+        st.write("**Files in ../models directory:**", os.listdir("../models"))
+
 # Page config
 st.set_page_config(page_title="Low Light Enhancer", layout="centered", page_icon="📷")
 
@@ -15,14 +24,37 @@ st.markdown("Upload low-light images (individually or as a `.zip`) to enhance th
 
 # Load model
 @st.cache_resource
-def load_model(path="../models/LOW_LIGHT_MODEL.h5"):
-    if not os.path.exists(path):
-        return None
-    return tf.keras.models.load_model(path, compile=False)
+def load_model():
+    # Try different possible paths for the model
+    possible_paths = [
+        "../models/LOW_LIGHT_MODEL.h5",  # Local development (from src/)
+        "models/LOW_LIGHT_MODEL.h5",     # Streamlit Cloud (from repo root)
+        "./models/LOW_LIGHT_MODEL.h5",   # Alternative path
+        "LOW_LIGHT_MODEL.h5"             # Same directory fallback
+    ]
+    
+    for path in possible_paths:
+        if os.path.exists(path):
+            try:
+                return tf.keras.models.load_model(path, compile=False)
+            except Exception as e:
+                st.warning(f"Failed to load model from {path}: {e}")
+                continue
+    
+    return None
 
 model = load_model()
 if model is None:
-    st.error("Model file 'LOW_LIGHT_MODEL.h5' not found. Please place it in the models folder.")
+    st.error("""
+    ❌ **Model file not found!** 
+    
+    Please ensure 'LOW_LIGHT_MODEL.h5' is available in one of these locations:
+    - `models/LOW_LIGHT_MODEL.h5` (recommended)
+    - `../models/LOW_LIGHT_MODEL.h5` 
+    - `LOW_LIGHT_MODEL.h5`
+    
+    **For Streamlit Cloud deployment:** Make sure the model file is committed to your GitHub repository in the `models/` folder.
+    """)
     st.stop()
 
 # Preprocess image
